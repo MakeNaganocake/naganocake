@@ -36,7 +36,6 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.timestamps null: false
       
       #add
-      t.integer :id
       t.string :last_name
       t.string :first_name
       t.string :last_name_kana
@@ -46,9 +45,8 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.string :address
       t.string :telephone_number
       
-      # t.boolean :is_deleted
-      t.datetime :created_at
-      t.datetime :updated_at
+      t.boolean :is_deleted
+     
       
     end
 

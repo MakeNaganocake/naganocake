@@ -35,10 +35,6 @@ class DeviseCreateAdmins < ActiveRecord::Migration[6.1]
 
       t.timestamps null: false
       
-      #add
-      t.integer :id
-      t.datetime :created_at
-      t.datetime :updated
       
     end
 
