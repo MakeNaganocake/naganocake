@@ -17,4 +17,6 @@ scope module: :public do
   get '/about' => "homes#about"
 root to: "homes#top"
 end
+
+resources :customers, :admin, :item, :order, :cart_items
 end
