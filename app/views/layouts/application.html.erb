@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+
+
 <html>
   <head>
     <title>Naganocake</title>
@@ -6,25 +9,48 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <body class="d-flex flex-column vh-100">
+    
     <!--flash massage-->
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     
     <header>
-      <%= link_to "About", about_path %> 
-      <%= link_to "商品一覧", index_path %>
-      <%= link_to "新規会員登録", new_customer_registration_path %>
-      <%= link_to "ログイン", new_customer_session_path %>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <ul class="navbar-nav ml-auto">
+      <% if customer_signed_in? %>
+      ようこそ！○○
+      <li class="nav-item">
+      <%= link_to "マイページ", customers_path, class: 'nav-link text-dark' %> 
+      </li>
+      <%= link_to "商品一覧", items_path, class: 'nav-link text-dark' %>
+      <%= link_to "カート", cart_items_path, class: 'nav-link text-dark' %>
+      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
+      <% else %>
+      <li class="nav-item">
+      <%= link_to "About", about_path, class: 'nav-link text-dark' %> 
+      </li>
+      <%= link_to "商品一覧", items_path, class: 'nav-link text-dark' %>
+      <%= link_to "新規会員登録", new_customer_registration_path, class: 'nav-link text-dark' %>
+      <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-dark' %>
       
+      <% end %>
+      </ul>
+      </div>
+      </nav>
     </header>
-  
+  <main class="mb-auto">
     
     <%= yield %>
+    </main>
+    <footer class="bg-dark text-white pt-5 pb-4">
+      
+    </footer>
   </body>
 </html>

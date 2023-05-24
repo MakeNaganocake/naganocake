@@ -1,9 +1,11 @@
 class Public::CustomersController < ApplicationController
  
   def show
+    @customer = current_customer
   end
  
   def edit
+    
   end
  
   def update
@@ -14,6 +16,10 @@ class Public::CustomersController < ApplicationController
  
   def withdraw
   end
+
+private
+
+
 
 
 end
