@@ -1,0 +1,23 @@
+<h2>ショッピングカート</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <th>商品名</th>
+        <th>単価（税込）</th>
+        <th>数量</th>
+    </thead>
+    <tbody>
+        <tr>
+            <%= @item.name %>
+        </tr>
+        <td>
+            <%= @item.add_tax_sales_price.to_s(:dalimited) %>
+        </td>
+        <td>
+            <%= @item.amount %>
+        </td>
+        <td>
+            <%= @total.round.to_s(:delimited) %>
+        </td>
+    </tbody>
+</table>
