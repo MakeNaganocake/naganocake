@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-    
+  scope module: :public do
+    get '/about' => "homes#about"
+    root to: "homes#top"
+    resources :items 
+    resource :customers 
+    resources :orders
+    resources :cart_items
+  end
   #customer
   #URL /customers/sign_in ...
   devise_for :customers,skip: [:password], controllers: {
@@ -13,13 +20,5 @@ Rails.application.routes.draw do
   }
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  scope module: :public do
-    get '/about' => "homes#about"
-    root to: "homes#top"
-    resources :items 
-    resource :customers 
-    resources :orders
-    resources :cart_items
-  end
 
 end

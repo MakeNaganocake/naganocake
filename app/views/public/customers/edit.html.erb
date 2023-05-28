@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="row">
+<h1>マイページ</h1>
+<%= form_with model: @customer, url: customers_path do |f| %>
+<table class="table table-bordered">
+    <tbody>
+        <tr>
+            <th scope="row">
+                名前
+            </th>
+            <td>
+                <%= f.text_field :last_name %><%= f.text_field :first_name %>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                カナ
+            </th>
+            <td>
+                <%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                郵便番号
+            </th>
+            <td>
+                <%= f.text_field :postal_code %>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                住所
+            </th>
+            <td>
+                <%= f.text_field :address %>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                電話番号
+            </th>
+            <td>
+                <%= f.text_field :telephone_number %>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                メールアドレス
+            </th>
+            <td>
+                <%= f.text_field :email %>
+            </td>
+        </tr>
+        <tr>
+            <td>
+               <%= f.submit '保存' %>
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+<% end %>
+</div>
+</div>
