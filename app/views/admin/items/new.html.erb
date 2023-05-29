@@ -1,0 +1,40 @@
+<div class="container">
+    <h1>商品新規登録</h1>
+      <div class="row">
+        <%= form_with model: @item do |f| %>
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th scope="row">商品画像</th>
+                    <td>
+                        <%= f.file_field :image, required: true %>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">商品名</th>
+                    <td>
+                        <%= f.text_field :name %>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">商品説明</th>
+                    <td>
+                        <%= f.text_field :introduction %>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">税抜価格</th>
+                    <td>
+                        <%= f.text_field :price %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <%= f.submit '保存', class: 'submit-button' %>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <% end %>
+      </div>
+</div>

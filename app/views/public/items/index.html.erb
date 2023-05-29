@@ -3,26 +3,14 @@
  <div class="row">
      <% @items.each do |Item| %>
      <div class="col-md-5">
-         <%= items.name %>
+         <td>
+             <%= link_to items_path(item.id) do %>
+             <%= image_tag item.get_profile_image(100,100) %>
+             <% end %>
+         </td>
+         <td><%= item.name %></td>
+         <td><%= item.price %></td>
      </div>
      <% end %>
  </div>   
 </div>
-
-
-<div class="container"></div>
-
-<h1>商品一覧</h1>
-<div class=""></div>
-<table>
-    <thead>
-        <tr>
-            <th>
-                <td>
-                    
-                </td>
-                
-            </th>
-        </tr>
-    </thead>
-</table>
