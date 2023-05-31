@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="row">
+<h1>マイページ</h1>
+
+<table class="table">
+    <tbody>
+        <tr>
+            <th scope="row">
+                会員ID
+            </th>
+            <td>
+                <%= @customer.id %>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                氏名
+            </th>
+            <td>
+                <%= @customer.last_name %><%= @customer.first_name %>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                フリカナ
+            </th>
+            <td>
+                <%= @customer.last_name_kana %><%= @customer.first_name_kana %>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                郵便番号
+            </th>
+            <td>
+                <%= @customer.postal_code %>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                住所
+            </th>
+            <td>
+                <%= @customer.address %>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                電話番号
+            </th>
+            <td>
+                <%= @customer.telephone_number %>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                メールアドレス
+            </th>
+            <td>
+                <%= @customer.email %>
+            </td>
+        </tr>
+　　<div>
+   　<%= link_to "編集", edit_admin_customer_path, class: 'btn btn-default' %>
+    </div>
+    注文履歴一覧を見るのリンク
+    </tbody>
+</table>
+</div>
+</div>

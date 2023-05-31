@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row">
+         <table class="table">
+            <thead class="table-light">
+                <th scope="col-md-3">購入日時</th>
+                <th scope="col-md-3">購入者</th>
+                <th scope="col-md-3">注文個数</th>
+                <th scope="col-md-3">注文ステータス</th>
+            </thead>
+        <%= @order_list.each do |order| %>
+            <tbody>
+                <th scope="col-md-3"><%= created_at %></th>
+                <th scope="col-md-3"><%= @customer.name %></th>
+                <th scope="col-md-3"><%= @item.name %></th>
+                <th scope="col-md-3">注文ステータス</th>
+            </tbody>
+         </table>
+        <% end %>
+    </div>
+</div>

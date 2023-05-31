@@ -1,7 +1,7 @@
 <div class="container">
 <h1>商品一覧</h1>   
  <div class="row">
-     <% @items.each do |Item| %>
+     <% @items.each do |item| %>
      <div class="col-md-5">
          <td>
              <%= link_to items_path(item.id) do %>

@@ -1,15 +1,26 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-3">
-            <div class="card" style="width: 18rem;">
-                <img src="" class="card-img-top" alt="">
-                <div class="card-body">
-                    <p class="card-text">item name<br>
-                    price</p>
-                    
-                </div>
-                
-            </div>
+            <%= image_tag @item.image, size: "200x200" %> 
         </div>
+        <div class="col-md-9">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>商品名</td><td><%= @item.name %></td>
+                </tr>
+                <tr>
+                    <td>商品説明</td><td><%= @item.introduction %></td>
+                </tr>
+                <tr>
+                    <td>税込価格(税抜価格)</td><td><%= @item.taxin_price %>(<%= @item.price %>)円</td>
+                </tr>
+            </tbody>
+            <div>
+    </div>
+        </table>
+   <%= link_to "編集", edit_admin_item_path(@item.id), class: 'btn btn-default' %>
+        </div>
+        
     </div>
 </div>

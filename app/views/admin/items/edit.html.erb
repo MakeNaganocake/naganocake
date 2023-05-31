@@ -1,7 +1,7 @@
 <div class="container">
     <h1>商品新規登録</h1>
       <div class="row">
-        <%= form_with model: @item do |f| %>
+        <%= form_with model: @item, url: admin_item_path(@item.id) do |f| %>
         <table class="table table-bordered">
             <tbody>
                 <tr>
