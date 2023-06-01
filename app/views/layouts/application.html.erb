@@ -24,12 +24,15 @@
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <ul class="navbar-nav ml-auto">
+            <%= link_to "管理者ページ", new_admin_session_path, class: 'btn btn-default' %>
             <% if admin_signed_in? %>
             <%= link_to "商品一覧", admin_items_path, class: 'btn btn-default' %>
             <%= link_to "会員一覧", admin_customers_path, class: 'btn btn-default' %>
-            <%= link_to "注文履歴一覧", admin_top_path, class: 'btn btn-default' %>
+            <%= link_to "注文履歴一覧", admin_orders_path, class: 'btn btn-default' %>
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-default' %>
-            <% elsif customer_signed_in? %>
+            <% end %>
+            <% if customer_signed_in? %>
+      ようこそ！○○
             <li class="nav-item">
             <%= link_to "マイページ", customers_path, class: 'nav-link text-dark' %> 
             </li>
@@ -37,8 +40,9 @@
             <%= link_to "カート", cart_items_path, class: 'nav-link text-dark' %>
             <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
             <% else %>
-            <%= link_to "管理者ページ", new_admin_session_path, class: 'btn btn-default' %>
+            <li class="nav-item">
             <%= link_to "About", about_path, class: 'nav-link text-dark' %> 
+            </li>
             <%= link_to "商品一覧", items_path, class: 'nav-link text-dark' %>
             <%= link_to "新規会員登録", new_customer_registration_path, class: 'nav-link text-dark' %>
             <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-dark' %>

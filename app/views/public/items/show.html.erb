@@ -1,1 +1,17 @@
-<h1>いちごのショートケーキ</h1>
+<div class="container">
+<h1><%= @item.name %></h1>
+<%= @item.introduction %>
+<%= @item.price %>
+
+<%= image_tag @item.image.variant(resize: '100x100') %>
+
+<%= form_with(model: @cart_item,url: cart_items_path, method: :post, local: true)do |f| %>
+<%= f.label :quantity, "個数選択" %>
+<%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
+<%= f.hidden_field :item_id, :value => @item.id %>
+<%= f.submit "カートに入れる" %>
+<% end %>
+
+
+
+</div>
