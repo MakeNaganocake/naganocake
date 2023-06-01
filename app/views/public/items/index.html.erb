@@ -5,7 +5,7 @@
      <div class="col-md-5">
          <td>
              <%= link_to item_path(item.id) do %>
-             <%= image_tag item.image.variant(resize: '100x100') %>
+             <%= image_tag item.get_image %>
              <% end %>
          </td>
          <td><%= item.name %></td>
