@@ -2,6 +2,7 @@ class Public::OrdersController < ApplicationController
 
 def new
     @order = Order.new
+    @order.address = current_customer.address
 end
 
 def confirm
@@ -33,7 +34,7 @@ def create
     else
         @order = Order.new(order.params)
         render :new
-    end    
+    end
 end
 
 def index
@@ -45,7 +46,7 @@ end
 private
 
 def order_params
-    params.require(:order).permit(:payment_method, :name, :address, :total_price)
+    params.require(:order).permit(:payment_method, :name, :address, :total_price, :postal_code)
 end
 
 end

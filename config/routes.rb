@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     root to: "homes#top"
     resources :items 
     resource :customers 
-    resources :orders
+    resources :orders 
+    post 'orders/confirm', as: 'confirm'
+    get 'orders/complete'
     resources :cart_items
   end
   #customer
