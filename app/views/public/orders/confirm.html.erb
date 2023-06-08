@@ -2,23 +2,23 @@
     <h1>注文情報確認</h1>
     <table class="table table-bordered">
     <thead>
+      <tr>
         <th>商品名</th>
         <th>単価（税込）</th>
         <th>数量</th>
+      </tr> 
     </thead>
     <tbody>
+        <% @cart_items.each do |order_list| %> 
+        <%#モデル名+schemefileで設定されているカラム名で表示 %>
         <tr>
-            <%= @order_item %>
+            <td><%= order_list.item.name %></td>
+        
+        <td><%= order_list.item.price %></td>
+        <td><%= order_list.amount %></td>
+        <td><%= order_list.item.subtotal %></td>
         </tr>
-        <td>
-            <%= @order_item.order_quantity %>
-        </td>
-        <td>
-            <%= @order_item.amount %>
-        </td>
-        <td>
-            <%= total.round.to_s(:delimited) %>
-        </td>
+        <% end %>
     </tbody>
 </table>
 </div>

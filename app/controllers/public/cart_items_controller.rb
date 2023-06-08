@@ -3,7 +3,7 @@ class Public::CartItemsController < ApplicationController
 
  def index
   @cart_items = current_customer.cart_items.all
-  @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
+  @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
   #inject・・配列の合計を算出。配列obj.inject {|初期値, 要素|ブロック処理}
  end
 
@@ -15,7 +15,7 @@ class Public::CartItemsController < ApplicationController
    else
       @cart_item = CartItem.new(cart_item_params)#新規登録(formから値を受け取るだけ
    end
-    @cart_item.customer_id = current_customer.id
+    @cart_item.customer_id = current_customer.id #?アソシエーション外部キー"誰のカート"
     if @cart_item.save!
      flash[:notice] =  '商品が追加されました。'
      redirect_to cart_items_path
@@ -25,12 +25,14 @@ class Public::CartItemsController < ApplicationController
     end
  end
  def update
-  if @cart_item.update(amount: params[:amount].to_i)
-    flash[:notice] = 'カート内の商品が更新されました。'
-  else
-    flash[:alert] = 'カート内の商品の更新に失敗しました。'
-  end
-   redirect_to cart_items_path
+   @cart_item = CartItem.find(params[:id])
+   if @cart_item.update(amount: params[:cart_item][:amount].to_i)
+    #特定のカラムからの情報を取り出す（）の中身
+     flash[:notice] = 'カート内の商品が更新されました。'
+   else
+     flash[:alert] = 'カート内の商品の更新に失敗しました。'
+   end
+    redirect_to cart_items_path
  end
  
  def destroy
