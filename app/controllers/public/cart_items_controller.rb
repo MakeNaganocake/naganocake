@@ -9,13 +9,13 @@ class Public::CartItemsController < ApplicationController
 
  def create
   #理解しとくとこ
-   @cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
-   if @cart_item #中身があるか確認
-      @cart_item.amount += CartItem.new(cart_item_params).amount　#追加の動作
+   cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
+   if cart_item #中身があるか確認(カートアイテムがあったら)　if +　変数　=> 変数があったら。
+      cart_item.amount += CartItem.new(cart_item_params).amount　#追加の動作
+      cart_item.save
    else
       @cart_item = CartItem.new(cart_item_params)#新規登録(formから値を受け取るだけ
-   end
-    @cart_item.customer_id = current_customer.id #?アソシエーション外部キー"誰のカート"
+      @cart_item.customer_id = current_customer.id #?アソシエーション外部キー"誰のカート"
     if @cart_item.save!
      flash[:notice] =  '商品が追加されました。'
      redirect_to cart_items_path
@@ -23,6 +23,7 @@ class Public::CartItemsController < ApplicationController
       flash[:alert] = '商品の追加に失敗しました。'
       redirect_to item_path(params[:cart_item][:item_id])
     end
+   end
  end
  def update
    @cart_item = CartItem.find(params[:id])

@@ -6,6 +6,7 @@
         <th>商品名</th>
         <th>単価（税込）</th>
         <th>数量</th>
+        <th>小計</th>
       </tr> 
     </thead>
     <tbody>
@@ -13,10 +14,15 @@
         <%#モデル名+schemefileで設定されているカラム名で表示 %>
         <tr>
             <td><%= order_list.item.name %></td>
-        
-        <td><%= order_list.item.price %></td>
-        <td><%= order_list.amount %></td>
-        <td><%= order_list.item.subtotal %></td>
+            <td><%= order_list.item.price %></td>
+            <td><%= order_list.amount %></td>
+            <td>
+            <% subtotal = ((order_list.item.price*order_list.amount)*1.10).to_i %>
+            <%= subtotal %>
+            </td>
+        </tr>
+        <tr>
+            <td><%= @total %></td>
         </tr>
         <% end %>
     </tbody>
