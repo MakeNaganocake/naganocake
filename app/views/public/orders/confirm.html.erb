@@ -1,4 +1,4 @@
-<div class="container">
+
     <h1>注文情報確認</h1>
     <table class="table table-bordered">
     <thead>
@@ -24,7 +24,13 @@
         <tr>
             <td><%= @total %></td>
         </tr>
-        <% end %>
     </tbody>
-</table>
-</div>
+    </table>
+        支払方法
+        <%= @order.payment_i18n %>
+        <br>
+        お届け先
+        <%= @order.postal_code %>
+        <%= @order.address %>
+        <%= @order.name %>
+        <% end %>
