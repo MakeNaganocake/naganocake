@@ -1,11 +1,10 @@
 <div class="container">
     <div class="row">
 <h1>マイページ</h1>
-<div>
-   <%= link_to "編集", edit_customers_path, class: 'btn btn-default' %>
-    </div>
-
 <table class="table table-bordered">
+<th scope="row">
+   <%= link_to "編集", edit_customers_path, class: 'btn btn-success' %>
+</th>
     <tbody>
         <tr>
             <th scope="row">
@@ -56,10 +55,12 @@
             </td>
         </tr>
     </tbody>
-    
-    配送先
-    注文履歴
-    
+    <th scope="row">
+    <%= link_to "配送先", class: "btn btn-primary" %>
+    </th>
+    <th scope="row">
+    <%= link_to "注文履歴", orders_path, class: "btn btn-primary" %>
+    </th>
 </table>
 </div>
 </div>
