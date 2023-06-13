@@ -26,13 +26,16 @@
       #order_listをsave
       #new=>1個のデータのみの保存　複数保存したい
       # cart_items.all.each do ||
-      @ordert_list = OrderList.new
-        order_list.order_id = @order.id
-        order_list.item_id = @cart_item.item_id
-        order_list.amount = @cart_item.amount
-        order_list.ordered_price =
+      cart_items = current_customer.cart_items.all
+      cart_items.each do |cart|
+        order_list = OrderList.new
+        order_list.order_id = cart.id
+        order_list.item_id = cart.item_id
+        order_list.amount = cart.amount
+        order_list.ordered_price = cart.item.price
         #cart_item/destroy/all
       redirect_to orders_complete_path
+      end
     end
     
     def index
