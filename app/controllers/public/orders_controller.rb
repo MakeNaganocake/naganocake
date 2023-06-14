@@ -27,24 +27,29 @@
       #new=>1個のデータのみの保存　複数保存したい
       # cart_items.all.each do ||
       cart_items = current_customer.cart_items.all
-      cart_items.each do |cart|
+      cart_items.each do |cart_item|
+        #cart_items(table/複数の情報)の中から|cart_item|1件の情報を取り出して
+        #3商品の情報が必要なら３個分を取得する(繰り返し/each)
         order_list = OrderList.new
-        order_list.order_id = cart.id
-        order_list.item_id = cart.item_id
-        order_list.amount = cart.amount
-        order_list.ordered_price = cart.item.price
-        #cart_item/destroy/all
-      redirect_to orders_complete_path
+        order_list.order_id = @order.id
+        #上記で定義した@orderと紐づける/saveした情報
+        #1:N(多)の関係の時、親と子になり"子の側"はどこに紐づいているのか
+        #(親側)を記述する必要がある。リレーション。外部キー
+        order_list.item_id = cart_item.item_id
+        order_list.amount = cart_item.amount
+        order_list.ordered_price = cart_item.item.price
+        order_list.save
       end
+      cart_items.destroy_all
+      redirect_to orders_complete_path
     end
     
     def index
       @orders = current_customer.orders
     end
     
-    
     def show
-        
+      @order = Order.find(params[:id])
     end
     
   private

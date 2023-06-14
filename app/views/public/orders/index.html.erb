@@ -1,7 +1,6 @@
 <div class="container">
 注文履歴
 <table class="table table-bordered">
-    <% @orders.each do |order| %>
         <thead>
             <tr>
                 <th>注文日</th>
@@ -11,6 +10,7 @@
                 <th>注文詳細</th>
             </tr>
         </thead>
+    <% @orders.each do |order| %>
         <tbody>
             <tr>
                 <th>
