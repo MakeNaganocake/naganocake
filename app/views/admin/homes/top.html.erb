@@ -2,19 +2,45 @@
     <div class="row">
          <table class="table">
             <thead class="table-light">
+                <tr>
                 <th scope="col-md-3">購入日時</th>
                 <th scope="col-md-3">購入者</th>
                 <th scope="col-md-3">注文個数</th>
                 <th scope="col-md-3">注文ステータス</th>
+                </tr>
             </thead>
-        <%= @order_list.each do |order| %>
             <tbody>
-                <th scope="col-md-3"><%= created_at %></th>
-                <th scope="col-md-3"><%= @customer.name %></th>
-                <th scope="col-md-3"><%= @item.name %></th>
+        <% @order_lists.each do |order| %>
+                <tr>
+                <th scope="col-md-3"><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></th>
+                <th scope="col-md-3"><%= order.name %></th>
+                <th scope="col-md-3">
+                    <% order.order_lists.each do |order_list| %>
+     <!-- アソシエーションで結ばれている（ER図参照）テーブルからの情報取得。
+    　       order(1) : order_lists(N) : item(1)
+    　         
+    　        order(N):item(N)この2者は
+    　        お互いに見ると他となり、他対他となるので直接結べない。
+    　        そのため仲介役となるorder_listsが中間テーブルとして役割を果たす。
+    　       
+    　        orderからitemテーブルの情報が欲しいときは
+    　        ER図通りorder=>order_lists(複数!)=>item
+    　        orderの情報を全部取ってきて
+    　        order_listsの中身を見れるようにする。
+    　        order_listsの中にあるitemを何個も取り出す（ぐるぐるまわす）
+    　        のでeachを使う。順番につないでいく。
+    　        -->
+    　            
+                <%= order_list.amount %>
+                    <% end %>
+                </th>
                 <th scope="col-md-3">注文ステータス</th>
+                </tr>
+        <% end %>
             </tbody>
          </table>
-        <% end %>
     </div>
 </div>
+
+　　O　O　O　O
+L＿＿＿＿＿＿＿＿＿＿＿｜

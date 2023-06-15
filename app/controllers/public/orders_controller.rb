@@ -27,6 +27,7 @@
       #new=>1個のデータのみの保存　複数保存したい
       # cart_items.all.each do ||
       cart_items = current_customer.cart_items.all
+      #アソシエーションを始めるための記述
       cart_items.each do |cart_item|
         #cart_items(table/複数の情報)の中から|cart_item|1件の情報を取り出して
         #3商品の情報が必要なら３個分を取得する(繰り返し/each)

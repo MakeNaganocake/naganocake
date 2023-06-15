@@ -51,15 +51,15 @@
 </tr>
 </thead>
 <tbody>
-<tr>
   <% @order.order_lists.each do |order_list| %> 
+<tr>
 <!-- @orderにひもづくorder_list -->
     <th><%= order_list.item.name %></th>
     <th><%= order_list.item.price %></th>
     <th><%= order_list.amount %></th>
     <th><%= order_list.ordered_price %></th>
-  <% end %>
 </tr>
+  <% end %>
 </tbody>
 </table>
 </div>

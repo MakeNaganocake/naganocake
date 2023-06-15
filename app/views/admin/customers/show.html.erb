@@ -3,7 +3,6 @@
 <h1>マイページ</h1>
 
 <table class="table">
-    <tbody>
         <tr>
             <th scope="row">
                 会員ID
@@ -60,11 +59,12 @@
                 <%= @customer.email %>
             </td>
         </tr>
-　　<div>
-   　<%= link_to "編集", edit_admin_customer_path, class: 'btn btn-default' %>
-    </div>
+　　<tr>
+　　    <td>
+   　    <%= link_to "編集", edit_admin_customer_path, class: 'btn btn-success' %>
+        </td>
+    </tr>
     注文履歴一覧を見るのリンク
-    </tbody>
 </table>
 </div>
 </div>
