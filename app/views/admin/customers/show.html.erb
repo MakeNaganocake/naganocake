@@ -1,6 +1,6 @@
 <div class="container">
-    <div class="row">
 <h1>マイページ</h1>
+    <div class="row">
 
 <table class="table">
         <tr>
@@ -63,8 +63,13 @@
 　　    <td>
    　    <%= link_to "編集", edit_admin_customer_path, class: 'btn btn-success' %>
         </td>
+        
     </tr>
-    注文履歴一覧を見るのリンク
+    <tr>
+        <td>
+            <%= link_to "注文履歴", admin_show_grasp_path(@order.id), class: "btn btn-primary" %>
+        </td>
+    </tr>
 </table>
 </div>
 </div>

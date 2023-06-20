@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
 <h1>マイページ</h1>
-<%= form_with model: @customer, url: customers_path do |f| %>
+<%= form_with model: @customer, url:  update_information_path do |f| %>
 <table class="table table-bordered">
     <tbody>
         <tr>
@@ -56,6 +56,11 @@
             <td>
                <%= f.submit '保存' %>
                 
+            </td>
+        </tr>
+        <tr>
+            <td>
+             <%= link_to "退会", quit_path(@customer.id), class: 'btn btn-success' %>
             </td>
         </tr>
     </tbody>

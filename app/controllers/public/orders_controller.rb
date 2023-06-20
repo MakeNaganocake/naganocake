@@ -9,6 +9,7 @@
         @order = Order.new(order_params)
         @cart_items = current_customer.cart_items.all
         @order.payment = params[:order][:payment]
+        #パラメーターから直接情報をとる記述
         @total = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.subtotal}
         if params[:order][:distination] == "1"
           @order.postal_code = current_customer.postal_code
@@ -59,3 +60,8 @@
       params.require(:order).permit(:payment, :address, :postal_code, :name, :customer_id, :postage, :total_payment)
     end
  end
+# params => parameter全体{この中身}
+# require(:order) => このテーブルが存在するかどうかの確認
+# permit => (:  , :  ,  )パラメーターの中に入ってていいもの
+# つまりここの情報だけでいいよと受け渡しする
+
