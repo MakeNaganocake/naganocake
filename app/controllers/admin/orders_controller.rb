@@ -1,6 +1,7 @@
 class Admin::OrdersController < ApplicationController
 def show
     #注文履歴詳細
+    #@order = customers.order
     @order = Order.find(params[:id])
     @order_lists = @order.order_lists
     #Orderの情報が@orderに入っている

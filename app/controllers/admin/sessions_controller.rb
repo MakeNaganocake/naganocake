@@ -23,7 +23,7 @@ class Admin::SessionsController < Devise::SessionsController
 #↓これいるの？
   def after_sign_in_path_for(resource_or_scope)
     if resource_or_scope.is_a?(Admin)
-      admin_items_path
+      admin_top_path
     else
       root_path
     end

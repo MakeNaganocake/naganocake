@@ -6,6 +6,7 @@
 <%= image_tag @item.image.variant(resize: '100x100') %>
 
 <%= form_with(model: @cart_item, url: cart_items_path, method: :post, local: true)do |f| %>
+<!--parameterに変換されてcreateに送信される。cart_items_path = #create / model名（親）に、入れ子の構造でamountとitem_idの情報が内包されて送られる-->
 <%= f.label :amount, "個数選択" %>
 <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
 <%= f.hidden_field :item_id, :value => @item.id %>

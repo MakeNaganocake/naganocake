@@ -3,6 +3,12 @@
     def new
         @order = Order.new
         @order.address = current_customer.address
+        #↓URLで直接入力を無効にして情報入力画面に行けない記述
+        #cartitemが空だったらカートに戻る
+        @cart_items = current_customer.cart_items
+        if @cart_items == []
+          redirect_to cart_items_path
+        end
     end
     
     def confirm

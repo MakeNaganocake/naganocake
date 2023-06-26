@@ -2,6 +2,7 @@ class Public::CartItemsController < ApplicationController
  before_action :setup_cart_item!, only: %i[add_item update_item delete_item]
 
  def index
+  
   @cart_items = current_customer.cart_items.all
   @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
   #inject・・配列の合計を算出。配列obj.inject {|初期値, 要素|ブロック処理}
@@ -10,9 +11,14 @@ class Public::CartItemsController < ApplicationController
  def create
   #理解しとくとこ
    cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
+   #cart_items -> current_customer に対して使っている。sessionの情報もcurrent_customer
+   #find_by(カラム名: 値) -> 基本構文
+   #cart_itemsの中のitem_id -> 何の値がcartitemに入っているか
+  
    if cart_item #中身があるか確認(カートアイテムがあったら)　if +　変数　=> 変数があったら。
-      cart_item.amount += CartItem.new(cart_item_params).amount　#追加の動作
+      cart_item.amount += CartItem.new(cart_item_params).amount #追加の動作
       cart_item.save
+      redirect_to cart_items_path
    else
       @cart_item = CartItem.new(cart_item_params)#新規登録(formから値を受け取るだけ
       @cart_item.customer_id = current_customer.id #?アソシエーション外部キー"誰のカート"
@@ -39,7 +45,7 @@ class Public::CartItemsController < ApplicationController
  def destroy
   @cart_item = CartItem.find(params[:id])
   if @cart_item.destroy
-   flash[:notice] = 'カート内のギフトが削除されました。'
+   flash[:notice] = 'カート内の商品が削除されました。'
   else
    flash[:alert] = '削除に失敗しました。'
   end
