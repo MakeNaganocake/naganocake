@@ -30,9 +30,9 @@
             <%= link_to "会員一覧", admin_customers_path, class: 'btn btn-default' %>
             <%= link_to "注文履歴一覧", admin_top_path, class: 'btn btn-default' %>
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-default' %>
-            <% end %>
             <br>
-            <% if customer_signed_in? %>
+            <% elsif customer_signed_in? %>
+            <!--条件文つけるeksif-->
       <div class="row">
      <br>
       <h2>ようこそ！

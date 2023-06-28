@@ -12,7 +12,7 @@
         <%= link_to "退会しない", customers_path, class: 'btn btn-success' %>
         </div>
         <div class="col">
-        <%= link_to "退会する", withdraw_path, method: :patch, class: 'btn btn-danger', date: { confilm: "本当に退会しますか？" } %>
+        <%= link_to "退会する", withdraw_path, method: :patch, class: 'btn btn-danger', data: { confirm: '本当に退会しますか？' } %>
         </div>
         <br>
     </div>
