@@ -10,12 +10,12 @@
                 </tr>
             </thead>
             <tbody>
-        <% @order_lists.each do |order| %>
+        <% @orders.each do |order| %>
                 <tr>
                 <th scope="col-md-3"><%= link_to order.created_at.strftime("%Y-%m-%d %H:%M"), admin_order_path(order.id) %></th>
                 <th scope="col-md-3"><%= order.name %></th>
                 <th scope="col-md-3">
-                    <% order.order_lists.each do |order_list| %>
+                    <%# order.order_lists.each do |order_list| %>
      <!-- アソシエーションで結ばれている（ER図参照）テーブルからの情報取得。
     　       order(1) : order_lists(N) : item(1)
     　         
@@ -31,8 +31,17 @@
     　        のでeachを使う。順番につないでいく。
     　        -->
     　            
-                     <%= order_list.amount %>
-                    <% end %>
+                     <%#= order_list.amount %>
+                     <!-- 注文した商品の合計を表示
+                     ①inject ②each文 += を組み合わせて足していく方法
+                     -->
+                    <%# end %>
+                    
+                    <%= order.order_lists.inject(0) { |sum, order_list| sum + order_list.amount } %>
+                    <!-- inject = 繰り返しの処理をする。複数のデータが必要。
+                    | |　ブロック変数、変数を２個指定できる。どんどん計算した計算結果を表示するのに適している。
+                    sum <= 計算結果を入れる変数() <= 計算のスタートする値を決められる。
+                    -->
                 </th>
                 <th scope="col-md-3">注文ステータス</th>
                 </tr>

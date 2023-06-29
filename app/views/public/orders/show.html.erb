@@ -55,9 +55,10 @@
 <tr>
 <!-- @orderにひもづくorder_list -->
     <th><%= order_list.item.name %></th>
-    <th><%= order_list.item.price %></th>
+    <th><%= order_list.add_tax_ordered_price %></th>
     <th><%= order_list.amount %></th>
-    <th><%= order_list.ordered_price %></th>
+    <th><%#= order_list.item.taxin_price * order_list.amount %>
+        <%= order_list.subtotal.to_s(:dalimited) %></th>
 </tr>
   <% end %>
 </tbody>

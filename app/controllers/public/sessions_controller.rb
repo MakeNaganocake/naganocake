@@ -34,7 +34,7 @@ class Public::SessionsController < Devise::SessionsController
         #is deleted = 削除されている　= failse 削除されていない =true 削除されている
         #ここでは退会している条件式を書く　よって　true
         flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
-        redirect_to about_path
+        redirect_to root_path
       else
         flash[:notice] = "項目を入力してください"
       end
